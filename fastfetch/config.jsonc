@@ -2,8 +2,8 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
     "type": "file",
-    "source": "~/.config/omarchy/branding/about.txt",
-    "color": { "1": "green" },
+    "source": "~/.config/fastfetch/ascii-logo.txt",
+    "color": { "2": "blue" },
     "padding": {
       "top": 2,
       "right": 6,
@@ -22,11 +22,12 @@
       "keyColor": "green"
     },
     {
-      "type": "cpu",
-      "key": "│ ├",
-      "showPeCoreCount": true,
-      "keyColor": "green"
-    },
+    "type": "cpu",
+    "key": "│ ├",
+    "showPeCoreCount": true,
+    "keyColor": "green"
+    }, 
+
     {
       "type": "gpu",
       "key": "│ ├",
@@ -69,12 +70,6 @@
       "text": "version=$(omarchy-version); echo \"Omarchy $version\""
     },
     {
-      "type": "command",
-      "key": "│ ├󰘬",
-      "keyColor": "blue",
-      "text": "branch=$(omarchy-version-branch); echo \"$branch\""
-    },
-    {
       "type": "kernel",
       "key": "│ ├",
       "keyColor": "blue"
@@ -95,9 +90,21 @@
       "keyColor": "blue"
     },
     {
+    "type": "shell",
+    "key": "│ ├",
+    "keyColor": "blue",
+    "format": "{1} {4}" // This shows both the name and version
+    },
+    {
       "type": "packages",
       "key": "│ ├󰏖",
       "keyColor": "blue"
+    },
+    {
+      "type": "command",
+      "key": "│ ├󰏖",
+      "keyColor": "blue",
+      "text": "updates=$(checkupdates 2>/dev/null | wc -l); if [ \"$updates\" -gt 0 ]; then echo \"$updates Packages\"; else echo \"Up to date ✅\"; fi"
     },
     {
       "type": "wmtheme",
@@ -106,20 +113,34 @@
     },
     {
       "type": "command",
-      "key": "│ ├󰸌",
+      "key": "└ └󰋋",
       "keyColor": "blue",
-      "text": "theme=$(omarchy-theme-current); echo -e \"$theme \\e[38m●\\e[37m●\\e[36m●\\e[35m●\\e[34m●\\e[33m●\\e[32m●\\e[31m●\""
-    },
-    {
-      "type": "terminalfont",
-      "key": "└ └",
-      "keyColor": "blue"
+      "text": "playerctl metadata --format '{{ artist }} - {{ title }}' 2>/dev/null || echo 'Nothing Playing'"
     },
     {
       "type": "custom",
       "format": "\u001b[90m└────────────────────────────────────────────────────┘"
     },
-    "break",
+      "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌───────────────────────Network────────────────────────┐"
+    },
+    {
+      "type": "publicip",
+      "key": "󰩟 Public IP",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "localip",
+      "key": "󰩟 Local IP",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+    },
+      "break" ,
     {
       "type": "custom",
       "format": "\u001b[90m┌────────────────────Uptime / Age────────────────────┐"
@@ -139,6 +160,7 @@
       "type": "custom",
       "format": "\u001b[90m└────────────────────────────────────────────────────┘"
     },
-    "break"
+      "break", 
+      "colors"
   ]
 }
